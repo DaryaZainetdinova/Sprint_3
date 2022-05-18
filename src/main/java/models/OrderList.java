@@ -7,5 +7,6 @@ public class OrderList {
         this.orders = orders;
     }
 
-    public OrderList() {}
+    public OrderList() {
+    }
 }

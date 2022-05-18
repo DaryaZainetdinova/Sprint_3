@@ -1,4 +1,5 @@
 import client.OrderApiClient;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import models.Order;
 import org.junit.Test;
@@ -17,32 +18,32 @@ public class OrderTest {
     @Parameterized.Parameters
     public static Collection<Order> data() {
         return Arrays.asList(new Order(
-                "Ivan",
-                "Ivanych",
-                "Some address",
-                4,
-                "+79999999999",
-                2,
-                "2022-06-06",
-                "comment text",
-                new String[]{"BLACK"}
+                        "Ivan",
+                        "Ivanych",
+                        "Some address",
+                        "4",
+                        "+79999999999",
+                        2,
+                        "2022-06-06",
+                        "comment text",
+                        new String[]{"BLACK"}
                 ),
                 new Order(
                         "Ivan",
                         "Ivanych",
                         "Some address",
-                        4,
+                        "4",
                         "+79999999999",
                         2,
                         "2022-06-06",
                         "comment text",
                         new String[]{"GREY"}
-                        ),
+                ),
                 new Order(
                         "Ivan",
                         "Ivanych",
                         "Some address",
-                        4,
+                        "4",
                         "+79999999999",
                         2,
                         "2022-06-06",
@@ -53,7 +54,7 @@ public class OrderTest {
                         "Ivan",
                         "Ivanych",
                         "Some address",
-                        4,
+                        "4",
                         "+79999999999",
                         2,
                         "2022-06-06",
@@ -68,9 +69,9 @@ public class OrderTest {
     }
 
     @Test
+    @DisplayName("Create order test")
     public void testCreateOrder() {
         Response response = this.orderApiClient.createOrder(this.order);
-
         response.then().statusCode(201).and().body("track", notNullValue());
     }
 }

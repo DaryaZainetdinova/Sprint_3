@@ -1,17 +1,17 @@
 package models;
 
 public class Order {
-    String firstName;
-    String lastName;
-    String address;
-    int metroStation;
-    String phone;
-    int rentTime;
-    String deliveryDate;
-    String comment;
-    String[] color;
+    public String firstName;
+    public String lastName;
+    public String address;
+    public String metroStation;
+    public String phone;
+    public int rentTime;
+    public String deliveryDate;
+    public String comment;
+    public String[] color;
 
-    public Order(String firstName, String lastName, String address, int metroStation, String phone, int rentTime, String deliveryDate, String comment, String[] color) {
+    public Order(String firstName, String lastName, String address, String metroStation, String phone, int rentTime, String deliveryDate, String comment, String[] color) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -23,7 +23,7 @@ public class Order {
         this.color = color;
     }
 
-    public Order(String firstName, String lastName, String address, int metroStation, String phone, int rentTime, String deliveryDate, String comment) {
+    public Order(String firstName, String lastName, String address, String metroStation, String phone, int rentTime, String deliveryDate, String comment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -34,5 +34,6 @@ public class Order {
         this.comment = comment;
     }
 
-    public Order() {}
+    public Order() {
+    }
 }

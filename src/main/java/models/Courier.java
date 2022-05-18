@@ -1,7 +1,7 @@
 package models;
 
 public class Courier {
-    public int id;
+    public String id;
     public String login;
     public String password;
     public String FirstName;
@@ -18,7 +18,6 @@ public class Courier {
     }
 
      public Courier () {
-
      }
 
     public String getFirstName() {
@@ -45,11 +44,11 @@ public class Courier {
         this.password = password;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

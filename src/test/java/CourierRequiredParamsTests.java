@@ -1,4 +1,5 @@
 import client.CourierApiClient;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import models.Courier;
 import org.junit.Test;
@@ -12,12 +13,12 @@ import static org.hamcrest.CoreMatchers.equalTo;
 
 @RunWith(Parameterized.class)
 public class CourierRequiredParamsTests {
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{index}: login=\"{0}\" password=\"{1}\" message=\"{2}\"")
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-                { "Vasia", "password", "" },
-                { "Vasia", "", "Недостаточно данных для создания учетной записи" },
-                { "", "password", "Недостаточно данных для создания учетной записи" },
+        return Arrays.asList(new Object[][]{
+                {"Vasia", "password", ""},
+                {"Vasia", "", "Недостаточно данных для создания учетной записи"},
+                {"", "password", "Недостаточно данных для создания учетной записи"},
         });
     }
 
@@ -33,6 +34,7 @@ public class CourierRequiredParamsTests {
     }
 
     @Test
+    @DisplayName("create orders test")
     public void test() {
         Courier courier = new Courier();
         courier.login = this.login;

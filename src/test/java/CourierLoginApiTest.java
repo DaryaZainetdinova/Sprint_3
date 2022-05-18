@@ -1,4 +1,5 @@
 import client.CourierApiClient;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import models.Courier;
 import org.junit.After;
@@ -25,11 +26,12 @@ public class CourierLoginApiTest {
 
     @After
     public void cleanup() {
-        int courierId = this.apiClient.getCourierId(this.courier);
+        String courierId = this.apiClient.getCourierId(this.courier);
         this.apiClient.deleteCourier(courierId);
     }
 
     @Test
+    @DisplayName("succes autorization test")
     public void testAuthorization() {
         Response response = this.apiClient.authorizationCourier(this.courier);
 
@@ -37,6 +39,7 @@ public class CourierLoginApiTest {
     }
 
     @Test
+    @DisplayName("autorization without password test")
     public void testAuthorizationWithoutPassword() {
         this.courier.password = "";
         Response response = this.apiClient.authorizationCourier(this.courier);
@@ -45,6 +48,7 @@ public class CourierLoginApiTest {
     }
 
     @Test
+    @DisplayName("autorization without login test")
     public void testAuthorizationWithoutLogin() {
         this.courier.login = "";
         Response response = this.apiClient.authorizationCourier(this.courier);
@@ -53,6 +57,7 @@ public class CourierLoginApiTest {
     }
 
     @Test
+    @DisplayName("autorization with wrong password test")
     public void testAuthorizationWithWrongPassword() {
         this.courier.password = "00000";
         Response response = this.apiClient.authorizationCourier(this.courier);
@@ -61,6 +66,7 @@ public class CourierLoginApiTest {
     }
 
     @Test
+    @DisplayName("autorization with wrong login test")
     public void testAuthorizationWithWrongLogin() {
         this.courier.login = "Wronglogin";
         Response response = this.apiClient.authorizationCourier(this.courier);
